@@ -1,0 +1,14 @@
+@keyframes change {
+    from{
+        background-color: skyblue;
+    }
+    to{
+        background-color: slateblue;
+    }
+}
+
+body {
+    background-color: palegreen;
+    position: sticky;
+    color: rgb(255, 255, 255);
+}

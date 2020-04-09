@@ -3,10 +3,11 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/styles/styles.css")
         title Let's Guess!
     body
         h1 Hello!
         script(src="/socket.io/socket.io.js")
-        script(src="/index.js")
+        script(src="/js/main.js")
         // 백엔드 부분에서 socket을 통해 서버를 열어주고
         // 프론트엔드 부분에서 socket.io 파일을 import 해 줌으로써 프론트와 백(서버)이 실시간으로 연결이 이루어짐.
