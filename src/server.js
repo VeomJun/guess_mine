@@ -2,6 +2,8 @@ import { join } from "path";
 import express from "express";
 import socketIO from "socket.io";
 import morgan from "morgan";
+import socketController from "./socketController";
+import events from "./events";
 
 const app = express();
 
@@ -10,7 +12,7 @@ app.set("views", join(__dirname, "views"))
 app.use(morgan('dev'))
 app.use(express.static(join(__dirname, "static")))
 
-app.get("/", (req, res) => res.render("home"))
+app.get("/", (req, res) => res.render("home", { events: JSON.stringify(events) }))
 
 const hello = () => {
     console.log("hello!")
@@ -24,14 +26,7 @@ const io = socketIO.listen(server)
 // io 변수를 만든 이유
 // io, 즉 socket이 모든 이벤트를 알아야 하기 때문이다.(실시간, real-time)
 
-io.on("connection", (socket) => {
-    socket.on("newMessage", ({ message }) => {
-        socket.broadcast.emit("messageNotif", { message, nickname:socket.nickname || "Nobody" })
-    }),
-    socket.on("nickName", ({ nickname }) => {
-        socket.nickname = nickname
-    })
-})
+io.on("connection", (socket) => socketController(socket))
 // 이 부분이 socket을 이용한 서버간의 통신에 시작점. 'connection'
 // 위의 코드가 의미하는 것.
 // 현재 서버는 socketIO를 통해 연결되어 있기 때문에

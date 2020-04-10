@@ -1,12 +1,3 @@
-import receiveMessage from "./chat"
-const socket = io("/");
+import "./login"
 
-const sendMessage = (message) => {
-    socket.emit("newMessage", { message })
-}
-
-const makeName = (nickname) => {
-    socket.emit("nickName", { nickname })
-}
-
-socket.on("messageNotif", receiveMessage)
+console.log(window.socket)

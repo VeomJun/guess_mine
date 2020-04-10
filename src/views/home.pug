@@ -6,7 +6,16 @@ html(lang="en")
         link(rel="stylesheet", href="/styles/styles.css")
         title Let's Guess!
     body
-        h1 Hello!
+        .loginBox
+            form#jsLogin
+                input(type="text", placeholder="What is your nickname")
+        .gameContainer#jsGame
+            h3 You are logged in.
+        script.
+            window.events = !{events}
+            // window를 통해 변수를 글로벌하게 import 해 줌으로써 모든 파일들에서
+            // 해당 변수가 사용 가능하게 됨.
+            // 해당 방식으로 서버와 이곳 클라이언트 쪽에서 한 파일을 같이 사용할 수 있음.
         script(src="/socket.io/socket.io.js")
         script(src="/js/main.js")
         // 백엔드 부분에서 socket을 통해 서버를 열어주고
