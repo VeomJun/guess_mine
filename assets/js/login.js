@@ -1,4 +1,5 @@
-import events from "../"
+import events from "../../src/events"
+import { initSocket } from "./sockets"
 
 
 const body = document.querySelector("body")
@@ -10,8 +11,9 @@ const LOGGED_IN = "loggedIn"
 const nickname = localStorage.getItem(NICKNAME)
 
 const logIn = (nickname) => {
-    window.socket = io("/");
-    window.socket.emit(window.events.setNickName, { nickname })
+    const socket = io("/");
+    socket.emit(window.events.setNickName, { nickname })
+    initSocket(socket)
 }
 
 if(nickname === null) {

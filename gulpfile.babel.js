@@ -25,8 +25,6 @@ const paths = {
 
 const clean = () => trash(["src/static"]);
 
-
-
 const styles = () => 
     gulp
     .src(paths.styles.src)
@@ -45,7 +43,8 @@ const styles = () =>
     // 목적지인 소스코드의 styles 폴더에 파일을 생성함.
 // src(소스코드)의 위치를 정의해 둠.
 
-const js = () => gulp
+const js = () => 
+    gulp
     .src(paths.js.src)
     .pipe(bro({
         transform: [
@@ -65,6 +64,5 @@ const dev = gulp.series(clean, styles, js, watchFiles)
 // 즉, 위 코드는 먼저 styles 함수를 통해 해당 scss 파일들을 
 // 변환한 후 watchFiles 함수를 통해 변환된 파일들을 계속적으로 지켜보게 함.
 
-export const build = gulp.series(clean, styles, js)
 
 export default dev;
