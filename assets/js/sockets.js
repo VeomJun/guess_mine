@@ -1,4 +1,5 @@
 import { handleNewUser, handleDisconnected } from "./notifications";
+import { handleNewMessage } from "./chat";
 
 let socket = null;
 // 6. 비어있는 함수 socket
@@ -16,6 +17,7 @@ export const initSocket = (aSocket) => {
     updateSocket(aSocket)
     aSocket.on(events.newUser, handleNewUser)
     aSocket.on(events.disconnected, handleDisconnected)
+    aSocket.on(events.newMsg, handleNewMessage)
 }
 // 1. login.js에서 로그인시 initSocket이 실행되고, 이 때 그에 해당하는 socket의 값을 가져옴.
 // 2. 이전 강의에 따라 socket은 서버에 접속 할 때, 각각 하나씩 부여 받게 됨.

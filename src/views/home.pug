@@ -10,7 +10,10 @@ html(lang="en")
             form#jsLogin
                 input(type="text", placeholder="What is your nickname")
         .gameContainer#jsGame
-            h1 You are logged in.
+            .chat
+                ul.chat__messages#jsMessages
+                form.chat__form#jsSendMsg
+                    input(placeholder="write a message", type="text")
         script.
             window.events = !{events}
             // window를 통해 변수를 글로벌하게 import 해 줌으로써 모든 파일들에서
