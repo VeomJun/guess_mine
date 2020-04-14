@@ -3,6 +3,7 @@
 @import "login";
 @import "chat";
 @import "notification";
+@import "canvas";
 
 * {
     box-sizing: border-box;
@@ -35,7 +36,13 @@ body{
   }
   &.loggedIn {
     .gameContainer {
-      display: block;
+      display: flex;
+      margin-top: 50px;
+      .canvas-total {
+        display: flex;
+        flex-direction: column;
+        margin-right: 150px;
+      }
     }
   }
 }

@@ -26,7 +26,7 @@ const io = socketIO.listen(server)
 // io 변수를 만든 이유
 // io, 즉 socket이 모든 이벤트를 알아야 하기 때문이다.(실시간, real-time)
 
-io.on("connection", (socket) => socketController(socket))
+io.on("connection", (socket) => socketController(socket, io))
 // 이 부분이 socket을 이용한 서버간의 통신에 시작점. 'connection'
 // 위의 코드가 의미하는 것.
 // 현재 서버는 socketIO를 통해 연결되어 있기 때문에
